@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <bean id="mysessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:Device.hbm.xml</value>
+                <value>classpath:Deviceclass.hbm.xml</value>
+                <value>classpath:Information.hbm.xml</value>
+                <value>classpath:Shopingcart.hbm.xml</value>
+                <value>classpath:Shopingorder.hbm.xml</value>
+                <value>classpath:Shopingorderitem.hbm.xml</value>
+                <value>classpath:User.hbm.xml</value>
+            </list>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>web.model.Device</value>
+                <value>web.model.Deviceclass</value>
+                <value>web.model.Information</value>
+                <value>web.model.Shopingcart</value>
+                <value>web.model.Shopingorder</value>
+                <value>web.model.Shopingorderitem</value>
+                <value>web.model.User</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/devicemanage?characterEncoding=UTF-8</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.connection.username">root</prop>
+                <prop key="hibernate.connection.password">root</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="webAction" class="web.action.UserAction">
+        <property name="userDao" ref="userDaoImp"></property>
+    </bean>
+    <bean id="userDaoImp" class="web.dao.imp.UserDaoImp">
+        <property name="sessionFactory" ref="mysessionFactory"></property>
+    </bean>
+    <bean id="myDeviceClassDao" class="web.dao.imp.DeviceClassDaoImp">
+        <property name="sessionFactory" ref="mysessionFactory">
+        </property>
+    </bean>
+    <bean id="mydeviceClassAction" class="web.action.imp.DeviceClassActionImp">
+        <property name="deviceClassDao" ref="myDeviceClassDao"></property>
+    </bean>
+    <bean id="myDeviceDao" class="web.dao.imp.DeviceDaoImp">
+        <property name="sessionFactory" ref="mysessionFactory"></property>
+    </bean>
+    <bean id="mydeviceAction" class="web.action.imp.DeviceActionImp">
+        <property name="deviceDao" ref="myDeviceDao"></property>
+        <property name="deviceClassDao" ref="myDeviceClassDao"></property>
+    </bean>
+    <bean id="myInformationDao" class="web.dao.imp.InformationDaoImp">
+        <property name="sessionFactory" ref="mysessionFactory"></property>
+    </bean>
+    <bean id="myinformationActionApp" class="app.action.imp.InformationActionImp">
+        <property name="informationDao" ref="myInformationDao"></property>
+    </bean>
+    <bean id="myinformationActionWeb" class="web.action.imp.InformationActionImp">
+        <property name="informationDao" ref="myInformationDao"></property>
+    </bean>
+    <bean id="myShopingorderitemDao" class="web.dao.imp.ShopingorderitemDaoImp">
+        <property name="sessionFactory" ref="mysessionFactory"></property>
+    </bean>
+    <bean id="myshopingorderitemAction"
+          class="web.action.imp.ShopingorderitemActionImp">
+        <property name="shopingorderitemDao" ref="myShopingorderitemDao"></property>
+        <property name="shopingorderDao" ref="myShopingorderDao"></property>
+        <property name="deviceDao" ref="myDeviceDao"></property>
+    </bean>
+    <bean id="myShopingorderDao" class="web.dao.imp.ShopingorderDaoImp">
+        <property name="sessionFactory" ref="mysessionFactory"></property>
+    </bean>
+    <bean id="myshopingorderAction" class="web.action.imp.ShopingorderActionImp">
+        <property name="shopingorderDao" ref="myShopingorderDao"></property>
+        <property name="userDao" ref="userDaoImp"></property>
+    </bean>
+    <bean id="myShopingcartDao" class="web.dao.imp.ShopingcartDaoImp">
+        <property name="sessionFactory" ref="mysessionFactory"></property>
+        <property name="shopingorderDao" ref="myShopingorderDao"></property>
+        <property name="shopingorderitemDao" ref="myShopingorderitemDao"></property>
+    </bean>
+    <bean id="myshopingcartAction" class="web.action.imp.ShopingcartActionImp">
+        <property name="shopingcartDao" ref="myShopingcartDao"></property>
+        <property name="deviceDao" ref="myDeviceDao"></property>
+        <property name="userDao" ref="userDaoImp"></property>
+    </bean>
+</beans>

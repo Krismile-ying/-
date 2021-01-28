@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="json" extends="json-default">
+        <action name="login" class="webAction" method="login">
+            <result type="json">
+                <param name="root">jsonRoot</param>
+            </result>
+        </action>
+        <action name="unLogin" method="unLogin" class="webAction">
+            <result name="success">/login.jsp</result>
+        </action>
+        <action name="findAllDeviceClass" method="findAllDeviceClass" class="mydeviceClassAction">
+            <result name="success">/allDeviceClass.jsp</result>
+        </action>
+        <action name="findDeviceByDeviceClassId" method="findDeviceByDeviceClassId" class="mydeviceAction">
+        </action>
+        <action name="addDeviceClass" method="addDeviceClass" class="mydeviceClassAction">
+            <result name="success">/addDeviceClassSuccess.jsp</result>
+        </action>
+        <action name="deleteDeviceClass" method="deleteDeviceClass" class="mydeviceClassAction">
+            <result name="success">/deleteDeviceClassSuccess.jsp</result>
+        </action>
+        <action name="findDeviceClass" method="findDeviceClass" class="mydeviceClassAction">
+        </action>
+        <action name="findAllDevice" class="mydeviceAction" method="findAllDevice">
+            <result name="success">/allDevice.jsp</result>
+        </action>
+        <action name="findDeviceById" class="mydeviceAction" method="findDeviceById">
+            <result name="success">/updateDevice.jsp</result>
+        </action>
+        <action name="updateDeviceById" class="mydeviceAction" method="updateDeviceById">
+            <result name="success">/allDevice.jsp</result>
+        </action>
+        <action name="deleteDevice" class="mydeviceAction" method="deleteDevice">
+            <result name="success">/deleteDeviceSuccess.jsp</result>
+        </action>
+        <action name="addDevice" class="mydeviceAction" method="addDevice">
+            <result name="success">/addDeviceSuccess.jsp</result>
+        </action>
+        <action name="addInformation" class="myinformationActionApp" method="addInformation">
+            <result name="success">addInformationSuccess.jsp</result>
+        </action>
+        <action name="findAllInformation" class="myinformationActionWeb" method="findAllInformation">
+            <result name="success">allInformation.jsp</result>
+        </action>
+        <action name="updateInformation" class="myinformationActionApp" method="updateInformation">
+            <result name="success">updateInformationShow.jsp</result>
+        </action>
+        <action name="deleteInformation" class="myinformationActionWeb" method="deleteInformation">
+            <result name="success">/deleteInformationSuccess.jsp</result>
+        </action>
+        <action name="showInformationByIdFromWebPortol" class="myinformationActionWeb" method="showInformationByIdFromWebPortol">
+        </action>
+        <action name="findAllShopingorderitem" class="myshopingorderitemAction" method="findAllShopingorderitem">
+        </action>
+        <action name="findShopingorderitemById" class="myshopingorderitemAction" method="findShopingorderitemById">
+            <result name="success">/updateShopingorderitem.jsp</result>
+        </action>
+        <action name="findShopingorderitemListByShopingorderId" class="myshopingorderitemAction" method="findShopingorderitemListByShopingorderId">
+        </action>
+        <action name="updateShopingorderitem" class="myshopingorderitemAction" method="updateShopingorderitem">
+            <result name="success">/allShopingorderitem.jsp</result>
+        </action>
+        <action name="addShopingorderitem" class="myshopingorderitemAction" method="addShopingorderitem">
+            <result name="success">/addShopingorderitemSuccess.jsp</result>
+        </action>
+        <action name="deleteShopingorderitem" class="myshopingorderitemAction" method="deleteShopingorderitem">
+            <result name="success">/deleteShopingorderitemSuccess.jsp</result>
+        </action>
+        <action name="findShopingorderById" class="myshopingorderAction" method="findShopingorderById">
+            <result name="success">/updateShopingorder.jsp</result>
+        </action>
+        <action name="findShopingorderByUserId" class="myshopingorderAction" method="findShopingorderByUserId">
+        </action>
+        <action name="findAllShopingorder" class="myshopingorderAction" method="findAllShopingorder">
+        </action>
+        <action name="updateShopingorder" class="myshopingorderAction" method="updateShopingorder">
+            <result name="success">/allShopingorder.jsp</result>
+        </action>
+        <action name="findUserById" class="webAction" method="findUserById">
+        </action>
+        <action name="addShopingorder" class="myshopingorderAction" method="addShopingorder">
+            <result name="success">/addShopingorderSuccess.jsp</result>
+        </action>
+        <action name="deleteShopingorder" class="myshopingorderAction" method="deleteShopingorder">
+            <result name="success">/deleteShopingorderSuccess.jsp</result>
+        </action>
+        <action name="findShopingcartById" class="myshopingcartAction" method="findShopingcartById">
+            <result name="success">/updateShopingcart.jsp</result>
+        </action>
+        <action name="updateShopingcart" class="myshopingcartAction" method="updateShopingcart">
+            <result name="success">/allShopingcart.jsp</result>
+        </action>
+        <action name="addShopingcart" class="myshopingcartAction" method="addShopingcart">
+            <result name="success">/addShopingcartSuccess.jsp</result>
+        </action>
+        <action name="deleteShopingcart" class="myshopingcartAction" method="deleteShopingcart">
+            <result name="success">/deleteShopingcartSuccess.jsp</result>
+        </action>
+        <action name="findAllShopingcartByUserId" class="myshopingcartAction" method="findAllShopingcartByUserId">
+        </action>
+        <action name="jiesuanShopingcart" class="myshopingcartAction" method="jiesuanShopingcart">
+            <result name="success">/jiesuanShopingcartSuccess.jsp</result>
+        </action>
+    </package>
+</struts>
